@@ -40,7 +40,7 @@ public class RandomGameStarter {
                 numberOfPlayer = Integer.parseInt(in.readLine());
                 numberOfComputer = rand.nextInt(10);
                 if (numberOfComputer == numberOfPlayer) {
-                    System.out.println("Увы, но андом умнее тебя");
+                    System.out.println("Увы, но рандом умнее тебя");
                     pointOfComputer = pointOfComputer++;
                     System.out.println("Очко компьютеру " + pointOfComputer);
                 } else {
