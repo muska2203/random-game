@@ -16,8 +16,8 @@ public class RandomGameStarter {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         boolean gameIsRunning = true;
         while (gameIsRunning) {
-            Random rand = new Random();
-            int numberOfComputer = rand.nextInt(10);
+            Random random = new Random();
+            int numberOfComputer = random.nextInt(10);
             numberOfComputer += 1;
             System.out.println(numberOfComputer);
             int numberOfPlayer = Integer.parseInt(in.readLine());
@@ -25,31 +25,29 @@ public class RandomGameStarter {
                 System.out.println("Молодец, у тебя получилось!");
                 pointOfPlayer = pointOfPlayer + 1;
                 System.out.println("Очко игроку " + pointOfPlayer);
+                gameIsRunning = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
             } else {
                 pointOfComputer = pointOfComputer + 1;
                 System.out.println("Попробуй ещё раз");
                 System.out.println("Очко компьютеру " + pointOfComputer);
+                gameIsRunning = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
             }
-            gameIsRunning = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
-            pointOfComputer = 0;
-            pointOfPlayer = 0;
-            boolean gameIsRunningBackward = true;
-            gameIsRunningBackward = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
+        }
+        pointOfPlayer = 0;
+        pointOfComputer = 0;
+        gameIsRunning = true;
+        while (gameIsRunning) {
+            Random random = new Random();
+            int numberOfPlayer = Integer.parseInt(in.readLine());
+            int numberOfComputer = random.nextInt();
             System.out.println(numberOfComputer);
-            while (gameIsRunningBackward) {
-                numberOfPlayer = Integer.parseInt(in.readLine());
-                numberOfComputer = rand.nextInt(10);
-                if (numberOfComputer == numberOfPlayer) {
-                    System.out.println("Увы, но рандом умнее тебя");
-                    pointOfComputer = pointOfComputer++;
-                    System.out.println("Очко компьютеру " + pointOfComputer);
-                } else {
-                    System.out.println("Всё таки рандом не человеческий мозг");
-                    pointOfPlayer = pointOfPlayer++;
-                    System.out.println("Очко игроку " + pointOfPlayer);
-                }
+            if (numberOfComputer == numberOfPlayer) {
+                System.out.println("Увы, но компьютер умнее тебя");
+                pointOfComputer = pointOfComputer + 1;
+                System.out.println("Очко компьютеру " + pointOfComputer);
+                gameIsRunning = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
             }
-
         }
     }
 }
+
