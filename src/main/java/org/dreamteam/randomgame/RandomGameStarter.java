@@ -31,6 +31,25 @@ public class RandomGameStarter {
                 System.out.println("Очко компьютеру " + pointOfComputer);
             }
             gameIsRunning = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
+            pointOfComputer = 0;
+            pointOfPlayer = 0;
+            boolean gameIsRunningBackward = true;
+            gameIsRunningBackward = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
+            System.out.println(numberOfComputer);
+            while (gameIsRunningBackward) {
+                numberOfPlayer = Integer.parseInt(in.readLine());
+                numberOfComputer = rand.nextInt(10);
+                if (numberOfComputer == numberOfPlayer) {
+                    System.out.println("Увы, но андом умнее тебя");
+                    pointOfComputer = pointOfComputer++;
+                    System.out.println("Очко компьютеру " + pointOfComputer);
+                } else {
+                    System.out.println("Всё таки рандом не человеческий мозг");
+                    pointOfPlayer = pointOfPlayer++;
+                    System.out.println("Очко игроку " + pointOfPlayer);
+                }
+            }
+
         }
     }
 }
