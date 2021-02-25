@@ -25,29 +25,25 @@ public class RandomGameStarter {
                 System.out.println("Молодец, у тебя получилось!");
                 pointOfPlayer = pointOfPlayer + 1;
                 System.out.println("Очко игроку " + pointOfPlayer);
-                gameIsRunning = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
             } else {
                 pointOfComputer = pointOfComputer + 1;
                 System.out.println("Попробуй ещё раз");
                 System.out.println("Очко компьютеру " + pointOfComputer);
-                gameIsRunning = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
-            }
-        }
-        pointOfPlayer = 0;
-        pointOfComputer = 0;
-        gameIsRunning = true;
-        while (gameIsRunning) {
-            Random random = new Random();
-            int numberOfPlayer = Integer.parseInt(in.readLine());
-            int numberOfComputer = random.nextInt();
-            System.out.println(numberOfComputer);
+                }
+            numberOfPlayer = Integer.parseInt(in.readLine());
+            numberOfComputer = random.nextInt(10);
             if (numberOfComputer == numberOfPlayer) {
-                System.out.println("Увы, но компьютер умнее тебя");
-                pointOfComputer = pointOfComputer + 1;
+                System.out.println("Увы, но рандом умнее тебя");
+                pointOfComputer = pointOfComputer++;
                 System.out.println("Очко компьютеру " + pointOfComputer);
-                gameIsRunning = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
+            } else {
+                System.out.println("Мозг человека всё таки умнее компьютера");
+                pointOfPlayer = pointOfPlayer++;
+                System.out.println("Очко игроку " + pointOfPlayer);
             }
+            gameIsRunning = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
+             }
         }
     }
-}
+
 
