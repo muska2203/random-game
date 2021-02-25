@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class RandomGameStarter {
 
-    public static final int MAX_GAME_POINTS = 5;
+    public static final int MAX_GAME_POINTS = 10;
 
     public static int pointOfComputer = 0;
     public static int pointOfPlayer = 0;
@@ -32,13 +32,14 @@ public class RandomGameStarter {
                 }
             numberOfPlayer = Integer.parseInt(in.readLine());
             numberOfComputer = random.nextInt(10);
+            System.out.println(numberOfComputer);
             if (numberOfComputer == numberOfPlayer) {
                 System.out.println("Увы, но рандом умнее тебя");
-                pointOfComputer = pointOfComputer++;
+                pointOfComputer = pointOfComputer + 1;
                 System.out.println("Очко компьютеру " + pointOfComputer);
             } else {
                 System.out.println("Мозг человека всё таки умнее компьютера");
-                pointOfPlayer = pointOfPlayer++;
+                pointOfPlayer = pointOfPlayer + 1;
                 System.out.println("Очко игроку " + pointOfPlayer);
             }
             gameIsRunning = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
