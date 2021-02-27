@@ -15,36 +15,45 @@ public class RandomGameStarter {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         boolean gameIsRunning = true;
+        int turnCounter = 0;
         while (gameIsRunning) {
+            turnCounter++;
+            boolean turnPlayer = turnCounter % 2 == 0;
             Random random = new Random();
-            int numberOfComputer = random.nextInt(10);
-            numberOfComputer += 1;
+            int numberOfComputer = random.nextInt(10) + 1;
             System.out.println(numberOfComputer);
             int numberOfPlayer = Integer.parseInt(in.readLine());
             if (numberOfPlayer == numberOfComputer) {
-                System.out.println("Молодец, у тебя получилось!");
-                pointOfPlayer = pointOfPlayer + 1;
-                System.out.println("Очко игроку " + pointOfPlayer);
-            } else {
-                pointOfComputer = pointOfComputer + 1;
-                System.out.println("Попробуй ещё раз");
-                System.out.println("Очко компьютеру " + pointOfComputer);
+                if (turnPlayer) {
+                    System.out.println("Молодец, у тебя получилось");
+                    pointOfPlayer++;
+                    System.out.println("Очко игроку " + pointOfPlayer);
+                } else {
+                    System.out.println("Попробуй ещё раз");
+                    pointOfComputer++;
+                    System.out.println("Очко компьютеру");
                 }
-            numberOfPlayer = Integer.parseInt(in.readLine());
-            numberOfComputer = random.nextInt(10);
-            System.out.println(numberOfComputer);
-            if (numberOfComputer == numberOfPlayer) {
-                System.out.println("Увы, но рандом умнее тебя");
-                pointOfComputer = pointOfComputer + 1;
-                System.out.println("Очко компьютеру " + pointOfComputer);
             } else {
-                System.out.println("Мозг человека всё таки умнее компьютера");
-                pointOfPlayer = pointOfPlayer + 1;
-                System.out.println("Очко игроку " + pointOfPlayer);
+                if (turnPlayer) {
+                    System.out.println("Увы, но компьютер умнее тебя");
+                    pointOfComputer++;
+                    System.out.println("Очко компьютеру " + pointOfComputer);
+                } else {
+                    System.out.println("Мозг человека всё таки умнее компьютера");
+                    pointOfPlayer++;
+                    System.out.println("Очко игроку " + pointOfPlayer);
+                }
             }
             gameIsRunning = pointOfComputer != MAX_GAME_POINTS && pointOfPlayer != MAX_GAME_POINTS;
-             }
+        } if (pointOfPlayer == MAX_GAME_POINTS){
+            System.out.println("Победил игрок");
+        } else {
+            System.out.println("Победил компьютер");
         }
+
     }
+}
+
+
 
 
